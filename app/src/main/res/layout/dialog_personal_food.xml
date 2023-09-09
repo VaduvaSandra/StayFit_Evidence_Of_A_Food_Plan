@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/editName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nume aliment" />
+
+    <EditText
+        android:id="@+id/editCalories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Calorii per porție" />
+
+    <EditText
+        android:id="@+id/editCarbs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Carbohidrați" />
+
+    <EditText
+        android:id="@+id/editFats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Grăsimi" />
+
+    <EditText
+        android:id="@+id/editProteins"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Proteine" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="3dp"
+            android:text="Adaugă"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="3dp"
+            android:text="Iesire"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+</LinearLayout>
+
+
+

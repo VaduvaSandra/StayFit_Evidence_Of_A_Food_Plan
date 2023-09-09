@@ -1,0 +1,64 @@
+<resources>
+    <string name="app_name">Prototip</string>
+    <string name="email"><font fgcolor='#fff'>Email</font></string>
+    <string name="username"><font fgcolor='#fff'>Username</font></string>
+    <string name="data_nastere"><font fgcolor='#fff'>Data Nasterii</font></string>
+    <string name="sex"><font fgcolor='#fff'>Sex</font></string>
+    <string name="masculin">M</string>
+    <string name="feminin">F</string>
+    <string name="inaltime"><font fgcolor='#fff'>Inaltime</font></string>
+    <string name="nivel_activitate"><font fgcolor='#fff'>Activitate</font></string>
+    <string name="obiectiv"><font fgcolor='#fff'>Obiectiv</font></string>
+    <string name="greutate"><font fgcolor='#fff'>Greutate</font></string>
+    <string name="varsta"><font fgcolor='#fff'>Varsta</font></string>
+    <string name="greutate_dorita"><font fgcolor='#fff'>Greutate dorita</font></string>
+    <string name="masuratoare">Masuratoare</string>
+    <string name="cm"><font fgcolor='#fff'>cm</font></string>
+    <string name="ani"><font fgcolor='#fff'>ani</font></string>
+    <string name="feet_inches">feet and inches</string>
+    <string name="kg"><font fgcolor='#fff'>kg</font></string>
+    <string name="pound">pound</string>
+
+
+    <string-array name="array_activity_levels">
+        <item>Sedentar(putin sau deloc)</item>
+        <item>Putin activ (1–2 zile pe saptamana)</item>
+        <item>Activ moderat (2-3 zile pe saptamana)</item>
+        <item>Foarte activ (4-5 zile pe saptamana)</item>
+        <item>Extra activ (6-7 zile pe saptamana)</item>
+    </string-array>
+
+    <string-array name="array_obiectiv">
+        <item>Mentinere greutate</item>
+        <item>Scadere in greutate</item>
+        <item>Crestere in greutate</item>
+    </string-array>
+
+    <string name="weekly_goal"><font fgcolor='#fff'>Obiectiv saptamanal</font></string>
+
+
+    <string-array name="array_weekly_goals_kg">
+        <item>0.5</item>
+        <item>1</item>
+        <item>1.5</item>
+    </string-array>
+
+
+    <string name="kg_each_week">kg each week</string>
+
+    <string name="i_want_to">Doresc sa</string>
+    <string name="sign_up">Sign Up</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="mese_principale">
+        <item>Mic-dejun</item>
+        <item>Prânz</item>
+        <item>Cină</item>
+        <item>Gustări</item>
+    </string-array>
+
+    <string name="image_description">Image description</string>
+
+
+</resources>
