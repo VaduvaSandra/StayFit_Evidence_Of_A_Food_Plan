@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:title="Acasa"
+        android:icon="@drawable/ic_round_house_24"/>
+    <item
+        android:id="@+id/food"
+        android:title="Retete"
+        android:icon="@drawable/ic_round_restaurant_menu_24"/>
+    <item
+        android:id="@+id/menu_fab"
+        android:title=""
+        android:enabled="false"/>
+    <item
+        android:id="@+id/statistics"
+        android:title="Statistici"
+        android:icon="@drawable/ic_baseline_auto_graph_24"/>
+    <item
+        android:id="@+id/profile"
+        android:title="Profil"
+        android:icon="@drawable/ic_baseline_person_24"/>
+
+</menu>

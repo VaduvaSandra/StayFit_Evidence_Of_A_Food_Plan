@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="calorieTarget" type="id" />
+    <item name="calorieCurrent" type="id" />
+    <item name="calculateDayCal" type="id" />
+    <item name="currentWeight" type="id" />
+    <item name="targetWeight" type="id" />
+    <item name="radio_other" type="id" />
+    <item name="radio_male" type="id" />
+    <item name="radio_female" type="id" />
+    <item name="menu_text" type="id" />
+    <item name="menu_add_button" type="id" />
+    <item name="menu_image" type="id" />
+</resources>
