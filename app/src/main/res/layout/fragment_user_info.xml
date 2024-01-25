@@ -6,7 +6,7 @@
     android:layout_height="fill_parent"
     android:background="@drawable/avocado2"
     android:fitsSystemWindows="true">
-
+    <!-- LinearLayout pentru organizarea verticală a elementelor de interfață -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -27,13 +27,13 @@
             android:src="@drawable/bmi" />
         <!-- //Logo -->
 
-        <!-- Table layout -->
+        <!-- TableLayout pentru organizarea tabulară a elementelor de interfață -->
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
 
-            <!-- Varsta -->
+            <!-- TableRow pentru introducerea varstei -->
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -72,7 +72,7 @@
             <!-- //Varsta -->
 
 
-            <!-- Sex -->
+            <!-- TableRow pentru selecția sexului -->
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -121,7 +121,7 @@
             </TableRow>
             <!-- //Sex -->
 
-            <!-- Inaltime -->
+            <!-- TableRow pentru introducerea înălțimii -->
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -160,7 +160,7 @@
             <!-- //Inaltime -->
 
 
-            <!-- Greutate -->
+            <!-- TableRow pentru introducerea greutății -->
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -198,7 +198,7 @@
             </TableRow>
             <!-- //Greutate -->
 
-            <!-- Nivel activitate -->
+            <!-- TableRow pentru selecția nivelului de activitate -->
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -219,7 +219,7 @@
             </TableRow>
             <!-- //Nivel activitate -->
 
-            <!-- Obiectiv -->
+            <!-- TableRow pentru selecția obiectivului -->
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -240,7 +240,7 @@
             </TableRow>
             <!-- //Obiectiv -->
 
-            <!-- Greutate -->
+            <!-- TableRow pentru introducerea greutății dorite -->
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -278,7 +278,7 @@
             </TableRow>
             <!-- //Greutate dorita-->
 
-            <!-- Saptamanal -->
+            <!-- TableRow pentru selecția greutății dorite săptămânal -->
 
             <TableRow
                 android:layout_width="match_parent"
@@ -308,7 +308,7 @@
             <!-- //Saptamanal -->
 
 
-            <!-- Buton inregistrare -->
+            <!-- Button pentru finalizarea înregistrării -->
             <Button
                 android:id="@+id/signup_button"
                 android:layout_width="match_parent"

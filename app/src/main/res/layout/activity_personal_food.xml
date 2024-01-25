@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Acest fișier XML definește aspectul și structura vizuală a unei pagini care permite utilizatorului
+    să adauge alimente personale. Se folosește un LinearLayout pentru a organiza elementele într-un mod vertical.
+    Se include un TextView pentru titlul paginii și un RecyclerView pentru afișarea listei de alimente.
+-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center">
-
+    <!-- TextView pentru titlul paginii -->
     <TextView
         android:id="@+id/titlefood"
         android:layout_width="wrap_content"
@@ -16,7 +21,7 @@
         android:textStyle="bold"
         android:clickable="true"
         android:onClick="showDialog"/>
-
+    <!-- RecyclerView pentru afișarea listei de alimente -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"

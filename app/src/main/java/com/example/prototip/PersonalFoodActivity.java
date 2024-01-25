@@ -53,8 +53,6 @@ public class PersonalFoodActivity extends AppCompatActivity {
         dinnerRadioButton = findViewById(R.id.radio_button3);
         snacksRadioButton = findViewById(R.id.radio_button4);
 
-
-
         recipeNameTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,20 +74,33 @@ public class PersonalFoodActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
+        /**
+         * Adaugă un listener pentru evenimentele de modificare a datelor în cadrul referinței personalMealsRef.
+         * Acesta este utilizat pentru a actualiza lista de alimente afișată în activitatea curentă.
+         */
         personalMealsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                // Inițializează o listă pentru a stoca informațiile despre alimente
                 List<FoodInfo> foodInfoList = new ArrayList<>();
+                // Parcurge toate copiii referinței personalMealsRef, fiecare reprezentând o masă personalizată
                 for(DataSnapshot mealSnapshot : snapshot.getChildren()){
+                    // Obține ID-ul mesei curente
                     String mealId = mealSnapshot.getKey();
+                    // Construiește referința către masa curentă din personalMealsRef
                     DatabaseReference mealRef = personalMealsRef.child(mealId);
 
+                    // Adaugă un listener pentru evenimentele de modificare a datelor în cadrul referinței mealRef
                     mealRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            // Obține informațiile despre aliment în formatul FoodInfo
                             FoodInfo foodInfo = snapshot.getValue(FoodInfo.class);
+                            // Verifică dacă informațiile despre aliment nu sunt nule
                             if(foodInfo != null){
+                                // Adaugă informațiile despre aliment în lista foodInfoList
                                 foodInfoList.add(foodInfo);
+                                // Actualizează lista de alimente afișată în adapter și notifică adapterul despre schimbare
                                 adapter.setFoodList(foodInfoList);
                                 adapter.notifyDataSetChanged();
                             }
@@ -97,6 +108,7 @@ public class PersonalFoodActivity extends AppCompatActivity {
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
+                            // Afiseaza un mesaj de eroare în cazul în care citirea datelor a eșuat
                             Log.e("PersonalFoodActivity", "Failed to read value", error.toException());
                         }
                     });
@@ -110,6 +122,7 @@ public class PersonalFoodActivity extends AppCompatActivity {
     }
 
     public void showDialog(View view){
+        // Inițializează un obiect Dialog pentru a afișa fereastra de dialog
         Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.dialog_personal_food);
 
@@ -125,25 +138,31 @@ public class PersonalFoodActivity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Obține valorile introduse în câmpurile de introducere
                 String name = editName.getText().toString();
                 int calories = Integer.parseInt(editCalories.getText().toString());
                 float carbs = Float.parseFloat(editCarbs.getText().toString());
                 float fats = Float.parseFloat(editFats.getText().toString());
                 float proteins = Float.parseFloat(editProteins.getText().toString());
 
+                // Obține referința către utilizatorul curent din baza de date Firebase
                 DatabaseReference userRef = FirebaseDatabase.getInstance().getReference()
                         .child("users").child(FirebaseAuth.getInstance().getUid());
+                // Creează o referință pentru alimentul personalizat în cadrul PersonalMeals
                 DatabaseReference personalMealsRef = userRef.child("PersonalMeals").push();
                 String mealId = personalMealsRef.getKey();
 
+                // Setează valorile corespunzătoare câmpurilor pentru alimentul personalizat
                 personalMealsRef.child("foodName").setValue(name);
                 personalMealsRef.child("calories").setValue(calories);
                 personalMealsRef.child("carbohydrates").setValue(carbs);
                 personalMealsRef.child("fat").setValue(fats);
                 personalMealsRef.child("protein").setValue(proteins);
 
+                // Creează un obiect FoodInfo cu informațiile alimentului personalizat și îl salvează în baza de date
                 FoodInfo foodInfo = new FoodInfo(name, calories, proteins, fats, carbs);
                 personalMealsRef.setValue(foodInfo);
+                // Închide fereastra de dialog după ce alimentul a fost adăugat
                 dialog.dismiss();
             }
         });
@@ -158,16 +177,22 @@ public class PersonalFoodActivity extends AppCompatActivity {
         dialog.show();
     }
     private void deleteFoodItem(FoodInfo foodInfo){
+        // Obține referința către baza de date Firebase pentru utilizatorul curent
         DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference().child("users");
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference personalMealsRef = usersRef.child(userId).child("PersonalMeals");
 
+        // Adaugă un ascultător de evenimente pentru a urmări modificările din PersonalMeals
         personalMealsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                // Parcurge fiecare element din PersonalMeals
                 for(DataSnapshot mealSnapshot: snapshot.getChildren()){
+                    // Obține un obiect FoodInfo pentru alimentul curent din listă
                     FoodInfo mealFoodInfo = mealSnapshot.getValue(FoodInfo.class);
+                    // Verifică dacă alimentul curent are același nume ca și alimentul de șters
                     if(mealFoodInfo.getFoodName().equals(foodInfo.getFoodName())){
+                        // Șterge alimentul din baza de date Firebase
                         mealSnapshot.getRef().removeValue();
                         break;
                     }

@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Aspect pentru afișarea unui pas într-o listă orizontală.
+    Fiecare pas include un număr de pas și o descriere a pasului.
+    Aspectul utilizează o orientare orizontală cu un padding.
+-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:padding="16dp">
+    <!-- TextView pentru Numărul Pasului -->
 
     <TextView
         android:id="@+id/textViewStepNumber"
@@ -12,7 +18,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         android:paddingRight="8dp" />
-
+    <!-- TextView pentru Descrierea Pasului -->
     <TextView
         android:id="@+id/textViewStepDescription"
         android:layout_width="0dp"

@@ -5,12 +5,12 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".StatisticsFragment">
-
+    <!-- LinearLayout pentru organizarea verticală a elementelor de interfață -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
+        <!-- TextView pentru afișarea titlului statisticilor -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -19,14 +19,14 @@
             android:textSize="18sp"
             android:textStyle="bold"
             android:padding="16dp"/>
-
+        <!-- CardView pentru a încapsula LineChart-ul -->
         <androidx.cardview.widget.CardView
             android:id="@+id/calories_card_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardElevation="2dp"
             app:cardUseCompatPadding="true">
-
+            <!-- LineChart pentru reprezentarea graficului statisticilor zilnice -->
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/calories_line_chart"
                 android:layout_width="match_parent"

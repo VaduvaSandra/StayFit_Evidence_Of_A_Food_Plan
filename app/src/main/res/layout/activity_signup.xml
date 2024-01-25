@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Acest fișier XML definește aspectul și structura vizuală a unei pagini de înregistrare în cadrul unei aplicații Android.
+    Se utilizează un ScrollView pentru a permite derularea conținutului în cazul în care depășește înălțimea ecranului.
+-->
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -6,7 +10,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-
+    <!-- LinearLayout pentru organizarea elementelor într-un mod vertical și centrat -->
 <LinearLayout
 
     android:layout_width="match_parent"
@@ -15,14 +19,14 @@
     android:gravity="center"
     android:background="@drawable/img1"
     tools:context=".SignupActivity">
-
+    <!-- CardView pentru a încadra conținutul principal al paginii -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
         app:cardCornerRadius="30dp"
         app:cardElevation="20dp">
-
+        <!-- LinearLayout pentru organizarea elementelor în interiorul CardView -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,7 +34,7 @@
             android:layout_gravity="center_horizontal"
             android:padding="24dp"
             android:background="@drawable/green_border">
-
+            <!-- TextView pentru afișarea titlului "Sign Up" -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -40,7 +44,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/green"/>
 
-
+            <!-- EditText pentru introducerea adresei de email -->
             <EditText
                 android:id="@+id/signup_email"
                 android:layout_width="match_parent"
@@ -53,7 +57,7 @@
                 android:inputType="text"
                 android:padding="8dp"
                 android:textColor="@color/black" />
-
+            <!-- EditText pentru introducerea numelui de utilizator -->
             <EditText
                 android:id="@+id/signup_username"
                 android:layout_width="match_parent"
@@ -67,7 +71,7 @@
                 android:padding="8dp"
                 android:textColor="@color/black" />
 
-
+            <!-- EditText pentru introducerea parolei -->
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -80,7 +84,7 @@
                 android:drawableLeft="@drawable/ic_baseline_lock_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
-
+            <!-- Button pentru acțiunea "Next" -->
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -89,7 +93,7 @@
                 android:textSize="18sp"
                 android:layout_marginTop="30dp"
                 app:cornerRadius = "20dp"/>
-
+            <!-- CheckBox pentru opțiunea "Rămâi conectat" -->
             <CheckBox
                 android:id="@+id/remember_me_checkbox"
                 android:layout_width="wrap_content"
@@ -100,7 +104,7 @@
                 android:layout_marginEnd="32dp"
                 android:minHeight="48dp"
                 android:text="Rămâi conectat" />
-
+            <!-- TextView pentru redirecționarea către ecranul de conectare -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Acest fișier XML definește aspectul și structura vizuală a unei pagini care afișează detalii despre o rețetă.
+    Se utilizează un RelativeLayout pentru a organiza elementele într-o manieră relativă, iar conținutul este plasat într-un ScrollView
+    pentru a permite derularea în cazul în care conținutul depășește înălțimea ecranului.
+-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+    <!-- ScrollView pentru a permite derularea conținutului -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
+        <!-- LinearLayout pentru organizarea elementelor într-un mod vertical -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp">
-
+            <!-- TextView pentru afișarea titlului "Ingrediente" -->
             <TextView
                 android:id="@+id/textViewIngredients"
                 android:layout_width="match_parent"
@@ -20,7 +25,7 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:text="Ingrediente:" />
-
+            <!-- TextView pentru afișarea conținutului "Ingrediente" -->
             <TextView
                 android:id="@+id/textViewIngredientsContent"
                 android:layout_width="match_parent"
@@ -30,7 +35,7 @@
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
                 android:inputType="textMultiLine" />
-
+            <!-- TextView pentru afișarea titlului "Pași de urmat" -->
             <TextView
                 android:id="@+id/textViewInstructions"
                 android:layout_width="match_parent"
@@ -38,7 +43,7 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:text="Pași de urmat:" />
-
+            <!-- RecyclerView pentru afișarea listei de instrucțiuni -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewInstructions"
                 android:layout_width="match_parent"

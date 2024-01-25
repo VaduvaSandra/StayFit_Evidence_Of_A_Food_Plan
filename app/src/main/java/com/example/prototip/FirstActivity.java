@@ -58,7 +58,7 @@ public class FirstActivity extends AppCompatActivity {
             startActivity(intent);
         });
     }
-    //Metoda pentru inlocuirea fragmentului curent cu unul nou
+        //Metoda pentru inlocuirea fragmentului curent cu unul nou
         private void replaceFragment (Fragment fragment){
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

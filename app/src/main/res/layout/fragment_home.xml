@@ -5,53 +5,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+    <!-- LinearLayout organizează elementele de interfață vertical -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".HomeFragment">
-
+        <!-- CardView pentru a împacheta elementele și a oferi stil vizual -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="8dp"
             app:cardElevation="4dp">
-
+            <!-- LinearLayout pentru a organiza elementele în interiorul CardView -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
+                <!-- LinearLayout orizontal pentru etichetele calorii totale și consumate -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-
+                    <!-- Eticheta pentru calorii totale -->
                     <TextView
                         android:id="@+id/tv_total_calories_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Calorii Totale: "
                         android:textSize="16sp" />
-
+                    <!-- Valoarea pentru calorii totale -->
                     <TextView
                         android:id="@+id/tv_total_calories"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="16sp" />
-
+                    <!-- Spațiu pentru separare vizuală -->
                     <Space
                         android:layout_width="8dp"
                         android:layout_height="1dp" />
-
+                    <!-- Eticheta pentru calorii consumate -->
                     <TextView
                         android:id="@+id/tv_consumed_calories_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Calorii Consumate: "
                         android:textSize="16sp" />
-
+                    <!-- Valoarea pentru calorii consumate -->
                     <TextView
                         android:id="@+id/tv_consumed_calories"
                         android:layout_width="wrap_content"
@@ -59,12 +59,12 @@
                         android:textSize="16sp" />
 
                 </LinearLayout>
-
+                <!-- Linie orizontală pentru separare vizuală -->
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@android:color/darker_gray" />
-
+                <!-- PieChart pentru reprezentarea grafică a datelor -->
                 <com.github.mikephil.charting.charts.PieChart
                     android:id="@+id/pie_chart"
                     android:layout_width="match_parent"
@@ -72,7 +72,7 @@
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
+        <!-- RecyclerView pentru afișarea listei de elemente -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/mRecyclerView"
             android:layout_width="match_parent"

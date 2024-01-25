@@ -23,12 +23,15 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * Adapter pentru afișarea și manipularea listei de alimente în cadrul unui RecyclerView.
+ */
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-    List<FoodInfo> foodList;
-    OnFoodDeleteListener deleteListener;
-    int selectedPosition;
-    RadioButton selectedRadioButton;
-    int totalCalories = 0;
+    List<FoodInfo> foodList; // Lista de alimente
+    OnFoodDeleteListener deleteListener; // Listener pentru ștergerea alimentelor
+    int selectedPosition; // Poziția alimentului selectat
+    RadioButton selectedRadioButton;// RadioButton-ul selectat
+    int totalCalories = 0;// Numărul total de calorii
 
     public MyAdapter(List<FoodInfo> foodList, OnFoodDeleteListener deleteListener){
         this.foodList = foodList;
@@ -62,13 +65,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        // Obține informații despre alimentul de la poziția specificată
         FoodInfo foodInfo = foodList.get(position);
+        // Setează textul pentru diferitele informații ale alimentului în ViewHolder
         holder.foodNameTextView.setText(foodInfo.getFoodName());
         holder.caloriesTextView.setText(String.valueOf(foodInfo.getCalories()));
         holder.carbsTextView.setText(String.valueOf(foodInfo.getCarbohydrates()));
         holder.fatTextView.setText(String.valueOf(foodInfo.getFat()));
         holder.proteinTextView.setText(String.valueOf(foodInfo.getProtein()));
 
+        // Actualizează numărul total de calorii cu cele ale alimentului curent
         totalCalories += foodInfo.getCalories();
         
 
@@ -145,24 +151,37 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     private void addSelectedFoodToHistory(FoodInfo selectedFood) {
+        // Obține o referință la rădăcina "users" în Firebase Realtime Database
         DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference().child("users");
+        // Obține ID-ul utilizatorului curent autentificat
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        // Construiește referința către istoricul de mese al utilizatorului curent
         DatabaseReference historyMealsRef = usersRef.child(userId).child("HistoryMeals");
 
+        // Obține data curentă sub formă de șir de caractere (ex. "yyyy-MM-dd")
         String currentDate = getCurrentDate();
+        // Obține referința către masa curentă (breakfast, lunch, dinner, snack) în funcție de RadioButton-ul selectat
         DatabaseReference currentMealRef = historyMealsRef.child(currentDate).child(getSelectedMealKey(selectedRadioButton));
 
 
+        // Adaugă alimentul selectat la istoricul mesei curente
         currentMealRef.push().setValue(selectedFood);
+        // Obține referința către totalul de calorii pentru data curentă în istoricul alimentar
         DatabaseReference totalCaloriesRef = historyMealsRef.child(getCurrentDate()).child("totalCalories");
+        // Ascultă o singură dată pentru a obține valoarea actuală a totalului de calorii
         totalCaloriesRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                // Obține valoarea curentă a totalului de calorii
                 Integer totalCalories = snapshot.getValue(Integer.class);
+                // Verifică dacă totalul de calorii există în baza de date
                 if(totalCalories == null){
+                    // Dacă nu există, inițializează totalul de calorii cu 0
                     totalCalories = 0;
                 }
+                // Adaugă numărul de calorii ale alimentului selectat la totalul de calorii
                 totalCalories += selectedFood.getCalories();
+                // Actualizează valoarea totalului de calorii în Firebase Realtime Database
                 totalCaloriesRef.setValue(totalCalories);
 
             }

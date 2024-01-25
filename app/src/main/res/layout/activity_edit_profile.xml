@@ -10,12 +10,14 @@
     android:background="@color/white"
     tools:context=".EditProfileActivity">
 
+    <!-- CardView pentru a incadra sectiunea de editare profil -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
         app:cardCornerRadius="30dp"
         app:cardElevation="20dp">
+        <!-- Layout intern pentru continutul cardului -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -23,6 +25,8 @@
             android:layout_gravity="center_horizontal"
             android:padding="24dp"
             android:background="@color/white">
+
+            <!-- Textul "Edit Profile" -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -31,6 +35,8 @@
                 android:textAlignment="center"
                 android:textStyle="bold"
                 android:textColor="@color/green"/>
+
+            <!-- Campul pentru introducerea numelui de utilizator -->
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -42,6 +48,8 @@
                 android:drawableLeft="@drawable/ic_baseline_person_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
+
+            <!-- Campul pentru introducerea varstei -->
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -53,6 +61,8 @@
                 android:drawableLeft="@drawable/ic_baseline_calendar_today_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
+
+            <!-- Campul pentru introducerea obiectivului -->
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -64,6 +74,8 @@
                 android:drawableLeft="@drawable/ic_baseline_check_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
+
+            <!-- Campul pentru introducerea greutatii curente -->
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -76,6 +88,8 @@
                 android:drawableLeft="@drawable/ic_baseline_monitor_weight_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
+
+            <!-- Campul pentru introducerea greutatii dorite -->
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -88,6 +102,8 @@
                 android:drawableLeft="@drawable/ic_baseline_monitor_weight_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
+
+            <!-- Butonul de salvare a modificărilor -->
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="60dp"

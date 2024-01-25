@@ -140,7 +140,6 @@ public class LunchActivity extends AppCompatActivity {
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference historyMealsRef = usersRef.child(userId).child("HistoryMeals");
         DatabaseReference lunchRef = historyMealsRef.child(selectedTimestamp).child("lunch");
-        String mealId = lunchRef.push().getKey();
 
         lunchRef.addValueEventListener(new ValueEventListener() {
             @Override

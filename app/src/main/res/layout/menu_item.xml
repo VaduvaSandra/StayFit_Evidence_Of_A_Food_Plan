@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Aspect pentru afișarea unui element de meniu sub formă de card.
+    CardView este utilizat pentru a oferi un aspect îmbunătățit și umbre.
+    Cardul conține un LinearLayout cu un ImageView pentru imagine, un TextView pentru textul meniului
+    și un ImageButton pentru a adăuga funcționalitate butonului de adăugare.
+    Cardul are un fundal alb, colțuri rotunjite și o umbrire.
+-->
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,19 +16,19 @@
     app:cardBackgroundColor="@android:color/white"
     app:cardCornerRadius="8dp"
     app:cardElevation="4dp">
-
+    <!-- Container LinearLayout pentru imagine, text și buton -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
+        <!-- ImageView pentru imagine -->
         <ImageView
             android:id="@+id/menu_image"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_margin="12dp"
             android:src="@drawable/ic_launcher_background" />
-
+        <!-- TextView pentru textul meniului, ajustat automat în funcție de conținut -->
         <TextView
             android:id="@+id/menu_text"
             android:layout_width="0dp"
@@ -30,7 +37,7 @@
             android:layout_weight="1"
             android:text="Menu Item"
             android:textSize="18sp" />
-
+        <!-- ImageButton pentru butonul de adăugare -->
         <ImageButton
             android:id="@+id/menu_add_button"
             android:layout_width="wrap_content"

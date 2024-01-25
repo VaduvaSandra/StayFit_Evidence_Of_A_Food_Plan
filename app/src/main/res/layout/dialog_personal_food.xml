@@ -1,45 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Acest fișier XML definește aspectul și structura vizuală a interfeței de utilizator pentru adăugarea
+    unui aliment într-o aplicație Android. Se folosește LinearLayout pentru a organiza elementele în
+    direcție verticală.
+-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp">
-
+    <!-- Câmp de editare pentru introducerea numelui alimentului -->
     <EditText
         android:id="@+id/editName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Nume aliment" />
-
+    <!-- Câmp de editare pentru introducerea caloriilor per porție -->
     <EditText
         android:id="@+id/editCalories"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Calorii per porție" />
-
+    <!-- Câmp de editare pentru introducerea carbohidraților -->
     <EditText
         android:id="@+id/editCarbs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Carbohidrați" />
-
+    <!-- Câmp de editare pentru introducerea grăsimilor -->
     <EditText
         android:id="@+id/editFats"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Grăsimi" />
-
+    <!-- Câmp de editare pentru introducerea proteinelor -->
     <EditText
         android:id="@+id/editProteins"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Proteine" />
-
+    <!-- Buton pentru adăugarea alimentului -->
+    <!-- Buton pentru anularea adăugării și ieșirea din interfață -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
+        <!-- Buton pentru adăugarea alimentului -->
         <Button
             android:id="@+id/btnAdd"
             android:layout_width="0dp"
@@ -48,7 +54,7 @@
             android:layout_marginEnd="3dp"
             android:text="Adaugă"
             android:textSize="12sp" />
-
+        <!-- Buton pentru anularea adăugării și ieșirea din interfață -->
         <Button
             android:id="@+id/btnCancel"
             android:layout_width="0dp"

@@ -7,6 +7,7 @@
     android:background="@drawable/avocado2"
     android:fitsSystemWindows="true">
 
+    <!-- Container principal, un layout linear vertical -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

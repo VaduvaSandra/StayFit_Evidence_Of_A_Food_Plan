@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Acest fișier XML definește un layout cu un element RelativeLayout care conține
+    un RecyclerView. Atributele XML și structura sunt comentate pentru a oferi claritate
+    cu privire la rolul fiecărui element în design.
+
+    RecyclerView este un element de interfață utilizat pentru a afișa o listă sau un
+    set de date scrollable.
+-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+    <!-- RecyclerView pentru afișarea listei de elemente -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"

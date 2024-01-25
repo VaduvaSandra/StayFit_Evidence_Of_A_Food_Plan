@@ -7,17 +7,17 @@
     android:layout_height="match_parent"
     android:background="@color/green"
     tools:context=".FirstActivity">
-
+    <!-- Layout relativ pentru a organiza elementele în raport cu celelalte -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
+        <!-- FrameLayout pentru conținutul principal, deasupra Bar-ului de jos -->
         <FrameLayout
             android:id="@+id/frame_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@id/bottomAppBar" />
-
+        <!-- BottomAppBar care conține BottomNavigationView -->
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottomAppBar"
             android:layout_width="match_parent"
@@ -26,7 +26,7 @@
             android:background="@color/white"
             app:fabCradleMargin="10dp"
             app:fabCradleRoundedCornerRadius="50dp">
-
+            <!-- BottomNavigationView pentru navigarea în partea de jos -->
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottomNavigationView"
                 android:layout_width="wrap_content"
@@ -38,7 +38,7 @@
         </com.google.android.material.bottomappbar.BottomAppBar>
 
     </RelativeLayout>
-
+    <!-- FloatingActionButton pentru adăugarea de conținut nou -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

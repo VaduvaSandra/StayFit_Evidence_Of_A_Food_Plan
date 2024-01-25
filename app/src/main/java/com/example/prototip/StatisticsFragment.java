@@ -135,19 +135,27 @@ public class StatisticsFragment extends Fragment {
     }
 
     private void setupChart() {
+        // Inițializează ascultătorul de evenimente pentru modificările în nodul "HistoryMeals"
         valueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                // Inițializează o listă de intrări pentru diagrama liniei
                 ArrayList<Entry> entries = new ArrayList<>();
+                // Iterează prin fiecare copil al nodului "HistoryMeals"
                 for(DataSnapshot dataSnapshot : snapshot.child("HistoryMeals").getChildren()){
                     String date = dataSnapshot.getKey();
+                    // Extrage harta de mese din data respectivă
                     HashMap<String, Object> mealsMap = dataSnapshot.getValue(new GenericTypeIndicator<HashMap<String, Object>>() {});
+                    // Inițializează totalul de calorii pentru ziua respectivă
                     int totalCalories = 0;
+                    // Verifică dacă harta de mese conține informații despre totalul de calorii
                     if(mealsMap != null && mealsMap.containsKey("totalCalories")){
                         totalCalories = ((Long) mealsMap.get("totalCalories")).intValue();
                     }
+                    // Adaugă o nouă intrare pentru diagrama liniei
                     entries.add(new Entry(convertTimestampToXValue(date), totalCalories));
                 }
+                // Inițializează setul de date pentru diagrama liniei
                 LineDataSet lineDataSet = new LineDataSet(entries, "Calorii");
                 LineData lineData = new LineData(lineDataSet);
                 lineChart.setData(lineData);
@@ -156,9 +164,10 @@ public class StatisticsFragment extends Fragment {
                 // Configurare axa Y
                 YAxis yAxis = lineChart.getAxisLeft();
                 yAxis.setAxisMinimum(0f);
-                yAxis.setAxisMaximum(dailyCalories + 500); // Valoarea maximă a axei Y
+                yAxis.setAxisMaximum((float) (dailyCalories + 500)); // Valoarea maximă a axei Y
                 yAxis.setGranularity(500f);
 
+                // Setează un formatare pentru valorile de pe axa Y
                 yAxis.setValueFormatter(new ValueFormatter() {
                     @Override
                     public String getFormattedValue(float value) {
@@ -168,6 +177,7 @@ public class StatisticsFragment extends Fragment {
                 // Configurare axa X
                 XAxis xAxis = lineChart.getXAxis();
                 xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+                // Setează un formatare pentru valorile de pe axa X
                 xAxis.setValueFormatter(new ValueFormatter() {
                     @Override
                     public String getFormattedValue(float value) {
@@ -190,6 +200,12 @@ public class StatisticsFragment extends Fragment {
         reference.addValueEventListener(valueEventListener);
     }
 
+    /**
+     * Converteste un șir de timestamp într-o valoare X pentru a fi folosită în diagrama liniei.
+     *
+     * @param timestamp Șirul de timestamp de tipul "yyyy-MM-dd".
+     * @return Valoarea X corespunzătoare timestamp-ului.
+     */
     private float convertTimestampToXValue(String timestamp) {
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd",Locale.getDefault());
@@ -200,11 +216,20 @@ public class StatisticsFragment extends Fragment {
             return 0f;
         }
     }
+    /**
+     * Converteste un timestamp într-un șir de dată pentru a fi afișat pe axa X a diagrama liniei.
+     *
+     * @param timestamp Timestampul de conversie.
+     * @return Șirul de dată formatat, de exemplu, "dd-MM".
+     */
     private String convertTimestampToDate(long timestamp) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM", Locale.getDefault());
         return dateFormat.format(new Date(timestamp));
     }
 
+    /**
+     * Suprascrie metoda onStop pentru a elimina ascultătorul de evenimente când fragmentul este oprit.
+     */
     @Override
     public void onStop() {
         super.onStop();

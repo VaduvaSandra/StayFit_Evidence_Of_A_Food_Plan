@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     android:background="@drawable/stayfit"
     tools:context=".MainActivity">
+    <!--
+        Acest fișier XML definește structura paginii principale MainActivity.
+        Un ConstraintLayout este folosit ca layout principal.
+        Background-ul paginii este setat cu ajutorul imaginii "stayfit".
+    -->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

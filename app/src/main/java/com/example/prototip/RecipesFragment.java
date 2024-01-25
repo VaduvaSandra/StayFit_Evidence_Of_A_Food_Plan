@@ -117,10 +117,13 @@ public class RecipesFragment extends Fragment {
 
             }
         });
+        // Setează adaptorul RecyclerView pentru a afișa rețetele
         recyclerView.setAdapter(adapter);
+        // Adaugă un ascultător de evenimente pentru a monitoriza modificările în nodul "Retete"
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                // Inițializează listele pentru rețete și carduri
                 List<Recipe> recipes = new ArrayList<>();
                 List<CardView> cardViews = new ArrayList<>();
                 //Iteram prin fiecare copil al snapshotului(retetele din baza de date)

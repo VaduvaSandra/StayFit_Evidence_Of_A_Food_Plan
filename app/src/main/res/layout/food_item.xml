@@ -1,3 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Acest fișier XML definește aspectul și structura vizuală a unui element CardView utilizat
+    pentru afișarea detaliilor alimentului într-o aplicație Android. Atributele XML și structura
+    sunt comentate pentru a oferi claritate cu privire la rolul fiecărui element în design.
+-->
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -5,18 +11,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="8dp"
     app:cardBackgroundColor="@color/lightgreen">
-
+    <!-- Layout relativ pentru a organiza elementele într-o manieră relativă -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
+        <!-- Imaginea alimentului -->
         <ImageView
             android:id="@+id/food_image"
             android:layout_width="96dp"
             android:layout_height="96dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_diet" />
-
+        <!-- Numele alimentului -->
         <TextView
             android:id="@+id/food_name"
             android:layout_width="wrap_content"
@@ -25,7 +31,7 @@
             android:text="Food Name"
             android:textSize="18sp"
             android:textStyle="bold" />
-
+        <!-- Eticheta și valoarea caloriilor -->
         <TextView
             android:id="@+id/calories_label"
             android:layout_width="wrap_content"
@@ -46,7 +52,7 @@
             android:textSize="14sp"
             android:textColor="@color/black"
             android:text="0" />
-
+        <!-- Eticheta și valoarea proteinelor -->
         <TextView
             android:id="@+id/protein_label"
             android:layout_width="wrap_content"
@@ -67,7 +73,7 @@
             android:textSize="14sp"
             android:textColor="@color/black"
             android:text="0" />
-
+        <!-- Eticheta și valoarea grăsimilor -->
         <TextView
             android:id="@+id/fat_label"
             android:layout_width="wrap_content"
@@ -88,7 +94,7 @@
             android:textSize="14sp"
             android:textColor="@color/black"
             android:text="0" />
-
+        <!-- Eticheta și valoarea carbohidraților -->
         <TextView
             android:id="@+id/carbs_label"
             android:layout_width="wrap_content"
@@ -109,7 +115,7 @@
             android:textSize="14sp"
             android:textColor="@color/black"
             android:text="0" />
-
+        <!-- Buton pentru ștergerea alimentului -->
         <ImageButton
             android:id="@+id/delete_button"
             android:layout_width="wrap_content"

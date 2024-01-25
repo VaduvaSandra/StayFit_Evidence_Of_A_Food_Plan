@@ -6,18 +6,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="8dp"
     app:cardBackgroundColor="@color/lightgreen">
-
+    <!-- Container RelativeLayout pentru imagine, text și informații nutriționale -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
+        <!-- ImageView pentru imaginea alimentului -->
         <ImageView
             android:id="@+id/food_image"
             android:layout_width="96dp"
             android:layout_height="96dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_diet" />
-
+        <!-- TextView pentru numele alimentului -->
         <TextView
             android:id="@+id/food_name"
             android:layout_width="wrap_content"
@@ -26,7 +26,7 @@
             android:text="Food Name"
             android:textSize="18sp"
             android:textStyle="bold" />
-
+        <!-- Informații nutriționale: calorii -->
         <TextView
             android:id="@+id/calories_label"
             android:layout_width="wrap_content"
@@ -47,7 +47,7 @@
             android:textSize="14sp"
             android:textColor="@color/black"
             android:text="0" />
-
+        <!-- Informații nutriționale: proteine -->
         <TextView
             android:id="@+id/protein_label"
             android:layout_width="wrap_content"
@@ -68,7 +68,7 @@
             android:textSize="14sp"
             android:textColor="@color/black"
             android:text="0" />
-
+        <!-- Informații nutriționale: grăsimi -->
         <TextView
             android:id="@+id/fat_label"
             android:layout_width="wrap_content"
@@ -89,7 +89,7 @@
             android:textSize="14sp"
             android:textColor="@color/black"
             android:text="0" />
-
+        <!-- Informații nutriționale: carbohidrați -->
         <TextView
             android:id="@+id/carbs_label"
             android:layout_width="wrap_content"
@@ -110,7 +110,7 @@
             android:textSize="14sp"
             android:textColor="@color/black"
             android:text="0" />
-
+        <!-- RadioGroup pentru opțiunile de masă: mic dejun, prânz, cină, gustări -->
         <RadioGroup
             android:id="@+id/meal_radio_group"
             android:layout_width="match_parent"
@@ -143,7 +143,7 @@
                 android:layout_height="wrap_content"
                 android:text="Snacks" />
         </RadioGroup>
-
+        <!-- Buton pentru ștergere aliment -->
         <ImageButton
             android:id="@+id/delete_button"
             android:layout_width="wrap_content"
@@ -152,7 +152,7 @@
             android:layout_marginTop="8dp"
             android:src="@drawable/ic_baseline_delete_24"
             tools:ignore="SpeakableTextPresentCheck" />
-
+        <!-- Buton pentru adăugare aliment -->
         <ImageButton
             android:id="@+id/add_button"
             android:layout_width="wrap_content"

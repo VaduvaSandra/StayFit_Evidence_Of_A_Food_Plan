@@ -95,10 +95,12 @@ public class HomeFragment extends Fragment {
 
 
 
+        // Adăugare unui ascultător de evenimente pentru a citi informațiile despre utilizator o singură dată
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+                // Obținerea informațiilor despre utilizator din baza de date Firebase
                 int weight = snapshot.child("weight").getValue(Integer.class);
                 int height = snapshot.child("height").getValue(Integer.class);
                 int age = snapshot.child("age").getValue(Integer.class);
@@ -107,14 +109,16 @@ public class HomeFragment extends Fragment {
                 String gen = snapshot.child("gender").getValue(String.class);
 
 
-                    double bmr;
+                // Calculul BMR (rata metabolică bazală) în funcție de gen
+                double bmr;
                     if (gen != null && gen.equals("radioButtonM")) {
                         bmr = (10 * weight) + (6.25 * height) - (5 * age) - 5;
                     } else {
                         bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
                     }
 
-                    double activitateFizica;
+                // Factorul de ajustare pentru nivelul de activitate fizică
+                double activitateFizica;
                     switch (activityLevel) {
                         case "Sedentar":
                             activitateFizica = 1.2; // Sedentar
@@ -136,7 +140,8 @@ public class HomeFragment extends Fragment {
                             break;
                     }
 
-                    double necesarCaloric;
+                // Calculul necesarului caloric în funcție de obiectivul utilizatorului
+                double necesarCaloric;
                     if (obiectiv.equals("Scadere in greutate")) {
                         necesarCaloric = (bmr * activitateFizica) - 500;
                     } else if (obiectiv.equals("Mentinere in greutate")) {
@@ -159,19 +164,25 @@ public class HomeFragment extends Fragment {
     }
 
 
+    // Inițializarea RecyclerView și a elementelor meniului
     private void initRecyclerView(View view) {
+        // Crearea unei liste de elemente pentru meniu
         ArrayList<MenuItem> menuList = new ArrayList<>();
         menuList.add(new MenuItem(R.drawable.breakfast, "Breakfast"));
         menuList.add(new MenuItem(R.drawable.lunch, "Lunch"));
         menuList.add(new MenuItem(R.drawable.dinner, "Dinner"));
         menuList.add(new MenuItem(R.drawable.snack, "Snacks"));
 
+        // Obținerea referinței la RecyclerView din XML
         RecyclerView recyclerView = view.findViewById(R.id.mRecyclerView);
+        // Configurarea RecyclerView pentru performanță și aspect
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        // Crearea și setarea adaptorului pentru meniu
         MenuAdapter adapter = new MenuAdapter(getContext(),menuList);
         recyclerView.setAdapter(adapter);
 
+        // Adăugarea unui ascultător pentru butonul de adăugare din adaptor
         adapter.setOnAddButtonClickListener(position -> openAddDialog(position));
         recyclerView.setAdapter(adapter);
 
@@ -182,27 +193,39 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view =  inflater.inflate(R.layout.fragment_home, container, false);
+        // Inițializarea elementelor vizuale din fragment
         pieChart = view.findViewById(R.id.pie_chart);
 
         requiredCaloriesTextView = view.findViewById(R.id.tv_total_calories);
         consumedCaloriesTextView = view.findViewById(R.id.tv_consumed_calories);
 
+        // Actualizarea diagramei cu valorile existente
         updatePieChartWithValues();
 
+        // Actualizarea diagramei cu valorile și configurarea RecyclerView
         updatePieChart();
         initRecyclerView(view);
 
+        // Returnarea vizualizării pentru afișare în fragment
         return view;
     }
 
+    /**
+     * Actualizează diagramei cu valorile necesare și consumate ale caloriilor.
+     */
    private void updatePieChartWithValues(){
 
-        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("users").child(FirebaseAuth.getInstance().getUid());
-        userRef.addValueEventListener(new ValueEventListener() {
+       // Obține referința către nodul utilizatorului curent din baza de date Firebase
+       DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("users").child(FirebaseAuth.getInstance().getUid());
+       // Adaugă un ascultător de evenimente pentru a urmări schimbările în datele utilizatorului
+       userRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                // Verifică dacă există și se poate obține valoarea pentru calorii_zilnice
                 if (snapshot.child("calorii_zilnice").exists() && snapshot.child("calorii_zilnice").getValue() != null) {
+                    // Obține valoarea necesarului zilnic de calorii
                     int requiredCalories = snapshot.child("calorii_zilnice").getValue(Integer.class);
+                    // Inițializează variabila pentru caloriile consumate
                     float consumedCalories = HomeFragment.this.totalCalories;
 
                     // Obține data curentă
@@ -211,11 +234,14 @@ public class HomeFragment extends Fragment {
                     String currentDate = sdf.format(new Date(timestamp));
                     Log.d("Valoare","Data"+currentDate);
 
+                    // Obține snapshot-ul cu istoricul meselor
                     DataSnapshot historyMealsSnapshot = snapshot.child("HistoryMeals");
                     //Verifica daca exista alimente pentru ziua curenta
                     if(historyMealsSnapshot.child(currentDate).exists()){
+                        // Obține snapshot-ul cu totalul caloriilor pentru ziua curentă
                         DataSnapshot totalCaloriesSnapshot = historyMealsSnapshot.child(currentDate).child("totalCalories");
                         if(totalCaloriesSnapshot.exists()){
+                            // Obține valoarea totalului caloriilor consumate
                             float totalCalories = totalCaloriesSnapshot.getValue(Float.class);
                             consumedCalories = totalCalories;
                         }
@@ -224,18 +250,23 @@ public class HomeFragment extends Fragment {
                         consumedCalories = 0;
                     }
 
+                    // Creează o listă de intrări pentru diagrama tip pie
                     List<PieEntry> entries = new ArrayList<>();
                     entries.add(new PieEntry(consumedCalories, "Calorii consumate"));
                     entries.add(new PieEntry(requiredCalories, "Calorii totale"));
 
+                    // Creează setul de date pentru diagrama tip pie
                     PieDataSet pieDataSet = new PieDataSet(entries, "");
                     pieDataSet.setColors(Color.RED, Color.GREEN);
                     pieDataSet.setValueTextColor(Color.BLACK);
                     pieDataSet.setValueTextSize(12f);
 
+                    // Creează obiectul de date pentru diagrama tip pie
                     PieData pieData = new PieData(pieDataSet);
+                    // Setează datele pentru diagrama tip pie și invalidizează diagrama
                     pieChart.setData(pieData);
                     pieChart.invalidate();
+                    // Actualizează textul pentru caloriile consumate în interfața utilizatorului
                     consumedCaloriesTextView.setText(String.valueOf(consumedCalories));
                 }
             }
@@ -264,15 +295,20 @@ public class HomeFragment extends Fragment {
         AlertDialog dialog = builder.create(); //Creeaza instanta dialogului
 
 
-        //Setarea functionalitatii pentru butoanele din fereastra de dialog
+        /**
+         * Metoda care se activează la apăsarea butonului "Adaugă" pentru a adăuga un aliment în istoricul meselor.
+         */
         adaugButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Obține numele alimentului și setează dimensiunea porției la 100 grame
                 String foodName = searchView.getQuery().toString();
                 int servingSize = 100;
+                // Obține data curentă în format "yyyy-MM-dd"
                 Calendar calendar = Calendar.getInstance();
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
                 String currentDate = sdf.format(calendar.getTime());
+                // Folosește API-ul CalorieNinja pentru a căuta informații nutriționale despre aliment
                 CalorieNinjaApiExample.searchFood(foodName, servingSize, new CalorieNinjaApiExample.Callback() {
                     @Override
                     public void onNutritionalInfoRetrieved(CalorieNinjaApiExample.NutritionalInfo info) {
@@ -281,6 +317,7 @@ public class HomeFragment extends Fragment {
                                 .child("users").child(FirebaseAuth.getInstance().getUid()).child("HistoryMeals").child(currentDate);
                         String mealId = "";
                         DatabaseReference currentDayMealRef = null;
+                        // Determină tipul de masă (mic dejun, prânz, cină, gustare) și creează o referință
                         if(position==0){
                             mealId = currentDayHistoryMealsRef.child("breakfast").push().getKey();
                             currentDayMealRef = currentDayHistoryMealsRef.child("breakfast");
@@ -294,8 +331,10 @@ public class HomeFragment extends Fragment {
                             mealId = currentDayHistoryMealsRef.child("snack").push().getKey();
                             currentDayMealRef = currentDayHistoryMealsRef.child("snack");
                         }
-                        
-                         Meal meal = new Meal(foodName, info.calories, info.protein, info.fat, info.carbohydrates);
+
+                        // Creează un obiect Meal cu informațiile nutriționale obținute
+                        Meal meal = new Meal(foodName, info.calories, info.protein, info.fat, info.carbohydrates);
+                        // Salvează informațiile despre masă în Firebase
                         currentDayMealRef.child(mealId).setValue(meal);
 
                         //Actualizam numarul total de calorii pentru ziua curenta
@@ -311,6 +350,7 @@ public class HomeFragment extends Fragment {
                                 totalCaloriesRef.setValue(totalCalories);
                                 Log.d("Valoarea","Calorii Total: "+totalCalories);
 
+                                // Actualizează textul pentru caloriile consumate în interfața utilizatorului
                                 consumedCaloriesTextView.setText(String.valueOf(totalCalories));
                             }
 

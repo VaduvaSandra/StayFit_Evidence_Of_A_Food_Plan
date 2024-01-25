@@ -3,14 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
-<androidx.constraintlayout.widget.ConstraintLayout
+    <!-- ConstraintLayout organizează elementele de interfață în mod flexibil -->
+    <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProfileFragment">
-
+        <!-- ImageView pentru imaginea de profil -->
     <ImageView
         android:id="@+id/profileImg"
         android:layout_width="100dp"
@@ -20,7 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
+        <!-- TextView pentru afișarea numelui de utilizator -->
     <TextView
         android:id="@+id/titleUserName"
         android:layout_width="wrap_content"
@@ -33,7 +34,7 @@
         app:layout_constraintEnd_toEndOf="@id/profileImg"
         app:layout_constraintStart_toStartOf="@id/profileImg"
         app:layout_constraintTop_toBottomOf="@id/profileImg" />
-
+        <!-- LinearLayout pentru a organiza informațiile despre utilizator -->
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -47,7 +48,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titleUserName">
-
+        <!-- LinearLayout pentru afișarea numelui de utilizator -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -57,7 +58,7 @@
             android:layout_marginBottom="10dp"
             android:orientation="horizontal"
             android:padding="8dp">
-
+            <!-- TextView pentru eticheta "Username" -->
             <TextView
                 android:id="@+id/userName"
                 android:layout_width="wrap_content"
@@ -67,7 +68,7 @@
                 android:textColor="@color/green"
                 android:textSize="18sp"
                 android:textStyle="bold" />
-
+            <!-- TextView pentru afișarea numelui de utilizator -->
             <TextView
                 android:id="@+id/profileName"
                 android:layout_width="wrap_content"
@@ -78,21 +79,21 @@
                 android:textColor="@color/black"
                 android:textSize="18sp" />
         </LinearLayout>
-
+        <!-- AppCompatImageView pentru linia orizontală de separare vizuală -->
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_margin="10dp"
             android:alpha="0.5"
             android:background="@color/green" />
-
+        <!-- LinearLayout pentru afișarea vârstei utilizatorului -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:orientation="horizontal"
             android:padding="8dp">
-
+            <!-- TextView pentru eticheta "Vârsta" -->
             <TextView
                 android:id="@+id/age"
                 android:layout_width="wrap_content"
@@ -102,7 +103,7 @@
                 android:textColor="@color/green"
                 android:textSize="18sp"
                 android:textStyle="bold" />
-
+            <!-- TextView pentru afișarea vârstei utilizatorului -->
             <TextView
                 android:id="@+id/profileAge"
                 android:layout_width="wrap_content"
@@ -113,21 +114,21 @@
                 android:textColor="@color/black"
                 android:textSize="18sp" />
         </LinearLayout>
-
+        <!-- AppCompatImageView pentru linia orizontală de separare vizuală -->
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_margin="10dp"
             android:alpha="0.5"
             android:background="@color/green" />
-
+        <!-- LinearLayout pentru afișarea obiectivului utilizatorului -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:orientation="horizontal"
             android:padding="8dp">
-
+            <!-- TextView pentru eticheta "Obiectiv" -->
             <TextView
                 android:id="@+id/obiectiv"
                 android:layout_width="wrap_content"
@@ -137,7 +138,7 @@
                 android:textColor="@color/green"
                 android:textSize="18sp"
                 android:textStyle="bold" />
-
+            <!-- TextView pentru afișarea obiectivului utilizatorului -->
             <TextView
                 android:id="@+id/profileObiectiv"
                 android:layout_width="wrap_content"
@@ -148,21 +149,21 @@
                 android:textColor="@color/black"
                 android:textSize="18sp" />
         </LinearLayout>
-
+        <!-- AppCompatImageView pentru linia orizontală de separare vizuală -->
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_margin="10dp"
             android:alpha="0.5"
             android:background="@color/green" />
-
+        <!-- LinearLayout pentru afișarea greutății utilizatorului -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:orientation="horizontal"
             android:padding="8dp">
-
+            <!-- TextView pentru eticheta "Greutate" -->
             <TextView
                 android:id="@+id/Greutate"
                 android:layout_width="wrap_content"
@@ -172,7 +173,7 @@
                 android:textColor="@color/green"
                 android:textSize="18sp"
                 android:textStyle="bold" />
-
+            <!-- TextView pentru afișarea greutății utilizatorului -->
             <TextView
                 android:id="@+id/profileGreutate"
                 android:layout_width="wrap_content"
@@ -184,7 +185,7 @@
                 android:textSize="18sp" />
         </LinearLayout>
     </LinearLayout>
-
+        <!-- Button pentru a edita profilul -->
     <Button
         android:id="@+id/editButton"
         android:layout_width="0dp"
@@ -198,7 +199,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/linearLayout"
         app:layout_constraintTop_toBottomOf="@id/linearLayout" />
-
+        <!-- Button pentru a deloga utilizatorul -->
     <Button
         android:id="@+id/logoutButton"
         android:layout_width="363dp"

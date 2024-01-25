@@ -1,3 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Aspect pentru afișarea unei cărți într-o listă sau grilă.
+    Folosește CardView pentru a adăuga umbre și aspect vizual îmbunătățit.
+    Fiecare card conține un ImageView pentru imagine și un TextView pentru titlu.
+    Cardul are un fundal selectabil și este focusabil pentru a permite interacțiunea.
+-->
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
@@ -6,18 +13,18 @@
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:foreground="?android:attr/selectableItemBackground">
-
+    <!-- Container RelativeLayout pentru imagine și titlu -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
+        <!-- ImageView pentru imagine -->
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:background="#dddddd"
             android:scaleType="centerCrop" />
-
+        <!-- TextView pentru titlu, plasat sub ImageView -->
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
